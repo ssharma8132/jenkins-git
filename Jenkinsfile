@@ -1,14 +1,12 @@
 pipeline {
-    agent any 
+    agent any
+    parameters {
+        string(name: "Greetings", defaultValue: "Hello", description: "How should I great")
+    }
     stages {
-        stage('Build') {
+        stage("Example") {
             steps {
-                sh 'echo "This is my fist pipeline"'
-            }
-        }
-        stage('MoreBuild') {
-            steps {
-                sh 'echo "Wow this is another stage!"'
+                echo "${params.Greetings} World!"
             }
         }
     }
